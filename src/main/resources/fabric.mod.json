@@ -1,0 +1,22 @@
+﻿{
+  "schemaVersion": 1,
+  "id": "autoenchantingskill",
+  "version": "1.0.0",
+  "name": "AutoEnchantingSkill",
+  "description": "Smart Automated Enchanting & Grindstone Cycling Mod with Modern GUI.",
+  "authors": ["CustomModder"],
+  "contact": {},
+  "license": "MIT",
+  "environment": "client",
+  "entrypoints": {
+    "client": [
+      "com.autoenchantingskill.AutoEnchantingSkillClient"
+    ]
+  },
+  "depends": {
+    "fabricloader": ">=0.16.9",
+    "minecraft": "~1.21.11",
+    "java": ">=21",
+    "fabric-api": "*"
+  }
+}
