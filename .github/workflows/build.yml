@@ -16,17 +16,24 @@ jobs:
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
+
       - name: Set up JDK 21 (Temurin)
         uses: actions/setup-java@v4
         with:
           java-version: '21'
           distribution: 'temurin'
+
       - name: Setup Gradle & Cache Dependencies
         uses: gradle/actions/setup-gradle@v4
         with:
           gradle-version: '8.11.1'
+
+      - name: Strip UTF-8 BOM from all files
+        run: find . -type f \( -name "*.gradle" -o -name "*.properties" -o -name "*.java" -o -name "*.json" \) -exec sed -i '1s/^\xEF\xBB\xBF//' {} +
+
       - name: Build Mod with Gradle
         run: gradle build --no-daemon
+
       - name: Upload Compiled Mod (.jar)
         uses: actions/upload-artifact@v4
         with:
